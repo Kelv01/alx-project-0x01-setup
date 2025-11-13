@@ -7,7 +7,7 @@ const Home: React.FC = () => {
       <main className="flex-grow flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600">
         <div className="text-center">
           <h1 className="text-5xl font-bold text-white ">
-            Wlcome to our Application
+           Welcome to our Application
           </h1>
 
           <p className="mt-4 text-xl text-white ">
