@@ -10,10 +10,10 @@ export interface UserProps {
   name: string;
   username: string;
   email: string;
-  address: string;
+  address: Address;
   phone: string;
   website: string;
-  company: string;
+  company: Company;
 }
 
 export interface Address {

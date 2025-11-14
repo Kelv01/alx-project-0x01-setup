@@ -23,11 +23,11 @@ const UserCard: React.FC<UserProps> = ({
             <span className="text-sm">User Email: {email}</span>
             <span className="text-sm">User Phone: {phone}</span>
             <span className="text-sm">User Website: {website}</span>
-            <span className="text-sm">User Company: {company?.name}</span>
+            <span className="text-sm">User Company: {company.name}</span>
             <div>
-              <p className="text-sm">Street: {address?.street}</p>
-              <p className="text-sm">City: {address?.city}</p>
-              <p className="text-sm">Zip: {address?.zipcode}</p>
+              <p className="text-sm">Street: {address.street}</p>
+              <p className="text-sm">City: {address.city}</p>
+              <p className="text-sm">Zip: {address.zipcode}</p>
             </div>
           </div>
         </div>
