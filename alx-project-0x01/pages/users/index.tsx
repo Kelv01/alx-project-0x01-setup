@@ -5,7 +5,7 @@ import React from "react";
 
 const Users: React.FC<UserProps[]> = ({ posts }) => {
   // console.log(posts)
-  
+
   return (
     <div>
       <Header />
@@ -16,7 +16,17 @@ const Users: React.FC<UserProps[]> = ({ posts }) => {
         <div className="grid grid-cols-3 grid-rows-1 justify-center items-center gap-2">
           {posts.map(
             (
-              { name, username, id, email, company, phone, address, website }: UserProps,
+              {
+                name,
+                username,
+                id,
+                email,
+                company,
+                phone,
+                address,
+                street,
+                website,
+              }: UserProps,
               key: number
             ) => (
               <UserCard
@@ -27,6 +37,7 @@ const Users: React.FC<UserProps[]> = ({ posts }) => {
                 website={website}
                 phone={phone}
                 address={address}
+                street={street}
                 id={id}
                 key={key}
               />
