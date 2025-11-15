@@ -1,49 +1,61 @@
 import UserCard from "@/components/common/UserCard";
 import Header from "@/components/layout/Header";
-import { UserProps } from "@/interfaces";
-import React from "react";
+import UserModal from "@/components/common/UserModal";
+import { UserData } from "@/interfaces";
+import React, { useState } from "react";
 
-const Users: React.FC<UserProps[]> = ({ posts }) => {
-  // console.log(posts)
+interface UsersPageProps {
+  posts: UserData[];
+}
+
+const Users: React.FC<UsersPageProps> = ({ posts }) => {
+  const [users, setUsers] = useState<UserData[]>(posts);
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleAddUser = (newUser: UserData) => {
+    setUsers([newUser, ...users]); // add user to list
+  };
 
   return (
     <div>
       <Header />
       <main className="p-4">
-        <div className="p-4">
+        <div className="p-4 flex justify-between items-center">
           <h1 className="text-2xl font-semibold">User Details</h1>
+
+          {/* Add User Button */}
+          <button
+            className="px-4 py-2 bg-blue-600 text-white rounded"
+            onClick={() => setModalOpen(true)}
+          >
+            Add User
+          </button>
         </div>
-        <div className="grid grid-cols-3 grid-rows-1 justify-center items-center gap-2">
-          {posts.map(
-            (
-              {
-                name,
-                username,
-                id,
-                email,
-                company,
-                phone,
-                address,
-                street,
-                website,
-              }: UserProps,
-              key: number
-            ) => (
-              <UserCard
-                name={name}
-                username={username}
-                email={email}
-                company={company}
-                website={website}
-                phone={phone}
-                address={address}
-                street={street}
-                id={id}
-                key={key}
-              />
-            )
-          )}
+
+        {/* Grid of User Cards */}
+        <div className="grid grid-cols-3 gap-2">
+          {users.map((user: UserData) => (
+            <UserCard
+              key={user.id}
+              id={user.id}
+              name={user.name}
+              username={user.username}
+              email={user.email}
+              company={user.company}
+              website={user.website}
+              phone={user.phone}
+              address={user.address}
+              street={user.address.street}
+            />
+          ))}
         </div>
+
+        {/* User Modal */}
+        <UserModal
+          isOpen={isModalOpen}
+          onClose={() => setModalOpen(false)}
+          onSubmit={handleAddUser}
+        />
       </main>
     </div>
   );
